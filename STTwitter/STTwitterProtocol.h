@@ -13,7 +13,8 @@
 
 @protocol STTwitterProtocol <NSObject>
 
-@property (nonatomic) NSTimeInterval timeoutInSeconds;
+@property (nonatomic) NSTimeInterval requestTimeoutInSeconds;
+@property (nonatomic) NSTimeInterval resourceTimeoutInSeconds;
 
 - (void)verifyCredentialsLocallyWithSuccessBlock:(void(^)(NSString *username, NSString *userID))successBlock
                                       errorBlock:(void(^)(NSError *error))errorBlock;

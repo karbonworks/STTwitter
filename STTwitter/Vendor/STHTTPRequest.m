@@ -98,7 +98,7 @@ static STHTTPRequestCookiesStorage globalCookiesStoragePolicy = STHTTPRequestCoo
         self.encodePOSTDictionary = YES;
         self.encodeGETDictionary = YES;
         self.addCredentialsToURL = NO;
-        self.timeoutSeconds = kSTHTTPRequestDefaultTimeout;
+        self.requestTimeoutSeconds = kSTHTTPRequestDefaultTimeout;
         self.filesToUpload = [NSMutableArray array];
         self.dataToUpload = [NSMutableArray array];
         self.HTTPMethod = @"GET"; // default
@@ -417,11 +417,7 @@ static STHTTPRequestCookiesStorage globalCookiesStoragePolicy = STHTTPRequestCoo
     if(globalIgnoreCache || _ignoreCache) {
         request.cachePolicy = NSURLRequestReloadIgnoringCacheData;
     }
-    
-    if(self.timeoutSeconds != 0.0) {
-        request.timeoutInterval = self.timeoutSeconds;
-    }
-    
+
     NSArray *cookies = [self requestCookies];
     NSDictionary *d = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
     [request setAllHTTPHeaderFields:d];
@@ -805,8 +801,10 @@ static STHTTPRequestCookiesStorage globalCookiesStoragePolicy = STHTTPRequestCoo
             // iOS 7
             sessionConfiguration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         }
+        sessionConfiguration.timeoutIntervalForResource = self.resourceTimeoutSeconds;
     } else {
         sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        sessionConfiguration.timeoutIntervalForRequest = self.requestTimeoutSeconds;
     }
     
     sessionConfiguration.allowsCellularAccess = YES;

@@ -30,7 +30,8 @@ extern NS_ENUM(NSUInteger, STTwitterAppOnlyErrorCode) {
 @property (nonatomic, retain) NSString *consumerSecret;
 @property (nonatomic, retain) NSString *bearerToken;
 
-@property (nonatomic) NSTimeInterval timeoutInSeconds;
+@property (nonatomic) NSTimeInterval requestTimeoutInSeconds;
+@property (nonatomic) NSTimeInterval resourceTimeoutInSeconds;
 
 + (instancetype)twitterAppOnlyWithConsumerName:(NSString *)conumerName consumerKey:(NSString *)consumerKey consumerSecret:(NSString *)consumerSecret;
 

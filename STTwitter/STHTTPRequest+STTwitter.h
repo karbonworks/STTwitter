@@ -13,9 +13,10 @@
 
 + (STHTTPRequest *)twitterRequestWithURLString:(NSString *)urlString
                                     HTTPMethod:(NSString *)HTTPMethod
-                              timeoutInSeconds:(NSTimeInterval)timeoutInSeconds
+                       requestTimeoutInSeconds:(NSTimeInterval)requestTimeoutInSeconds
+                      resourceTimeoutInSeconds:(NSTimeInterval)resourceTimeoutInSeconds
                   stTwitterUploadProgressBlock:(void(^)(int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite))uploadProgressBlock
-                stTwitterDownloadProgressBlock:(void(^)(NSData *data, int64_t totalBytesReceived, int64_t totalBytesExpectedToReceive))stTwitterDownloadProgressBlock
+                stTwitterDownloadProgressBlock:(void(^)(NSData *data, int64_t totalBytesReceived, int64_t totalBytesExpectedToReceive))downloadProgressBlock
                          stTwitterSuccessBlock:(void(^)(NSDictionary *requestHeaders, NSDictionary *responseHeaders, id json))successBlock
                            stTwitterErrorBlock:(void(^)(NSDictionary *requestHeaders, NSDictionary *responseHeaders, NSError *error))errorBlock;
 

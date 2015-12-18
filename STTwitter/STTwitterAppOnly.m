@@ -170,7 +170,8 @@
     __block __weak STHTTPRequest *wr = nil;
     __block STHTTPRequest *r = [STHTTPRequest twitterRequestWithURLString:urlString
                                                                HTTPMethod:@"GET"
-                                                         timeoutInSeconds:_timeoutInSeconds
+                                                  requestTimeoutInSeconds:_requestTimeoutInSeconds
+                                                 resourceTimeoutInSeconds:_resourceTimeoutInSeconds
                                              stTwitterUploadProgressBlock:nil
                                            stTwitterDownloadProgressBlock:^(NSData *data, int64_t totalBytesReceived, int64_t totalBytesExpectedToReceive) {
                                                if(progressBlock) progressBlock(wr, data);
@@ -244,7 +245,8 @@
     __block __weak STHTTPRequest *wr = nil;
     __block STHTTPRequest *r = [STHTTPRequest twitterRequestWithURLString:urlString
                                                                HTTPMethod:@"POST"
-                                                         timeoutInSeconds:_timeoutInSeconds
+                                                  requestTimeoutInSeconds:_requestTimeoutInSeconds
+                                                 resourceTimeoutInSeconds:_resourceTimeoutInSeconds
                                              stTwitterUploadProgressBlock:nil
                                            stTwitterDownloadProgressBlock:^(NSData *data, int64_t totalBytesReceived, int64_t totalBytesExpectedToReceive) {
                                                if(downloadProgressBlock) downloadProgressBlock(wr, data);

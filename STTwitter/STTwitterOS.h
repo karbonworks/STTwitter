@@ -23,7 +23,8 @@ extern const NSString *STTwitterOSInvalidatedAccount;
 
 @interface STTwitterOS : NSObject <STTwitterProtocol>
 
-@property (nonatomic) NSTimeInterval timeoutInSeconds;
+@property (nonatomic) NSTimeInterval requestTimeoutInSeconds;
+@property (nonatomic) NSTimeInterval resourceTimeoutInSeconds;
 
 + (instancetype)twitterAPIOSWithAccount:(ACAccount *)account;
 + (instancetype)twitterAPIOSWithFirstAccount;

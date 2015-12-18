@@ -47,7 +47,8 @@ typedef NS_ENUM(NSUInteger, STHTTPRequestCookiesStorage) {
 @property (nonatomic, strong) NSDictionary *GETDictionary; // appended to the URL string
 @property (nonatomic, strong) NSData *rawPOSTData; // eg. to post JSON contents
 @property (nonatomic) NSStringEncoding POSTDataEncoding;
-@property (nonatomic) NSTimeInterval timeoutSeconds; // ignored if 0
+@property (nonatomic) NSTimeInterval requestTimeoutSeconds; // ignored if 0
+@property (nonatomic) NSTimeInterval resourceTimeoutSeconds; // ignored if 0
 @property (nonatomic) BOOL addCredentialsToURL; // default NO
 @property (nonatomic) BOOL encodePOSTDictionary; // default YES
 @property (nonatomic) BOOL encodeGETDictionary; // default YES, set to NO if the parameters are already URL encoded

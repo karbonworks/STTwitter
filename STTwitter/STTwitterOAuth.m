@@ -551,7 +551,8 @@
     __block __weak STHTTPRequest *wr = nil;
     STHTTPRequest *r = [STHTTPRequest twitterRequestWithURLString:urlString
                                                        HTTPMethod:HTTPMethod
-                                                 timeoutInSeconds:_timeoutInSeconds
+                                          requestTimeoutInSeconds:_requestTimeoutInSeconds
+                                         resourceTimeoutInSeconds:_resourceTimeoutInSeconds
                                      stTwitterUploadProgressBlock:uploadProgressBlock
                                    stTwitterDownloadProgressBlock:^(NSData *data, int64_t totalBytesReceived, int64_t totalBytesExpectedToReceive) {
                                        if(downloadProgressBlock) downloadProgressBlock(wr, data);

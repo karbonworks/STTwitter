@@ -195,7 +195,15 @@ static NSDateFormatter *dateFormatter = nil;
 }
 
 - (void)setTimeoutInSeconds:(NSTimeInterval)timeoutInSeconds {
-    _oauth.timeoutInSeconds = timeoutInSeconds;
+    [self setRequestTimeoutInSeconds:timeoutInSeconds];
+    [self setResourceTimeoutInSeconds:timeoutInSeconds];
+}
+
+- (void)setRequestTimeoutInSeconds:(NSTimeInterval)timeoutInSeconds {
+  _oauth.requestTimeoutInSeconds = timeoutInSeconds;
+}
+- (void)setResourceTimeoutInSeconds:(NSTimeInterval)timeoutInSeconds {
+  _oauth.resourceTimeoutInSeconds = timeoutInSeconds;
 }
 
 - (NSString *)prettyDescription {
@@ -632,9 +640,7 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
                               
                               STHTTPRequest *r = [STHTTPRequest requestWithURLString:imageURLString];
                               __weak STHTTPRequest *wr = r;
-                              
-                              r.timeoutSeconds = strongSelf.oauth.timeoutInSeconds;
-                              
+
                               r.completionBlock = ^(NSDictionary *headers, NSString *body) {
                                   
                                   STHTTPRequest *sr = wr; // strong request
@@ -5033,7 +5039,8 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
     
     STHTTPRequest *r = [STHTTPRequest twitterRequestWithURLString:urlString
                                                        HTTPMethod:@"POST"
-                                                 timeoutInSeconds:10
+                                          requestTimeoutInSeconds:10
+                                         resourceTimeoutInSeconds:10
                                      stTwitterUploadProgressBlock:nil
                                    stTwitterDownloadProgressBlock:nil
                                             stTwitterSuccessBlock:^(NSDictionary *requestHeaders, NSDictionary *responseHeaders, id json) {

@@ -309,7 +309,7 @@ const NSString *STTwitterOSInvalidatedAccount = @"STTwitterOSInvalidatedAccount"
                                                                  httpMethod:slRequestMethod
                                                                  parameters:d
                                                                     account:_account
-                                                           timeoutInSeconds:_timeoutInSeconds
+                                                           timeoutInSeconds:_requestTimeoutInSeconds
                                                         uploadProgressBlock:uploadProgressBlock
                                                                 streamBlock:progressBlock
                                                             completionBlock:successBlock

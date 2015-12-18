@@ -27,7 +27,8 @@ extern NS_ENUM(NSUInteger, STTwitterOAuthErrorCode) {
 
 @interface STTwitterOAuth : NSObject <STTwitterProtocol>
 
-@property (nonatomic) NSTimeInterval timeoutInSeconds;
+@property (nonatomic) NSTimeInterval requestTimeoutInSeconds;
+@property (nonatomic) NSTimeInterval resourceTimeoutInSeconds;
 
 + (instancetype)twitterOAuthWithConsumerName:(NSString *)consumerName
                                  consumerKey:(NSString *)consumerKey
