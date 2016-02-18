@@ -564,13 +564,23 @@
     wr = r;
     
     r.HTTPMethod = HTTPMethod;
-    
+
+    NSData *rawPOSTData = [params objectForKey:kSTPOSTRawJSONDataKey];
+
     NSString *postKey = [params valueForKey:kSTPOSTDataKey];
-    NSData *postData = [params valueForKey:postKey];;
+    NSData *postData = [params valueForKey:postKey];
     
     if([HTTPMethod isEqualToString:@"GET"]) {
         r.GETDictionary = params;
         [self signRequest:r];
+    } else if (rawPOSTData) {
+        // If there is a raw JSON body set, use that.
+        r.rawPOSTData = rawPOSTData;
+        NSMutableDictionary *mutableParams = [params mutableCopy];
+        [mutableParams removeObjectForKey:kSTPOSTRawJSONDataKey];
+        [r setHeaderWithName:@"Content-Type" value:@"application/json"];
+        [self signRequest:r isMediaUpload:NO oauthCallback:oauthCallback];
+        r.POSTDictionary = mutableParams ? mutableParams : @{};
     } else {
         // https://dev.twitter.com/docs/api/1.1/post/statuses/update_with_media
         

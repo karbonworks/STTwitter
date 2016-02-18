@@ -13,6 +13,7 @@ extern NSUInteger kSTTwitterDefaultShortURLLengthHTTPS;
 
 extern NSString *kSTPOSTDataKey; // dummy parameter to tell a key used to post raw media, necessary because media are ignored in OAuth signatures
 extern NSString *kSTPOSTMediaFileNameKey; // dummy parameter to tell the name of a file to be uploaded, optional but more correct than none
+extern NSString *kSTPOSTRawJSONDataKey; // dummy parameter to set the request body data
 
 @interface NSString (STTwitter)
 

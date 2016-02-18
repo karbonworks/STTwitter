@@ -13,6 +13,7 @@ NSUInteger kSTTwitterDefaultShortURLLengthHTTPS = 23;
 
 NSString *kSTPOSTDataKey = @"kSTPOSTDataKey";
 NSString *kSTPOSTMediaFileNameKey = @"kSTPOSTMediaFileNameKey";
+NSString *kSTPOSTRawJSONDataKey = @"kSTPOSTRawJSONDataKey";
 
 @implementation NSString (STTwitter)
 
