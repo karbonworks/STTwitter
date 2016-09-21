@@ -736,6 +736,7 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
     if(excludeReplies) md[@"exclude_replies"] = [excludeReplies boolValue] ? @"1" : @"0";
     if(contributorDetails) md[@"contributor_details"] = [contributorDetails boolValue] ? @"1" : @"0";
     if(includeRetweets) md[@"include_rts"] = [includeRetweets boolValue] ? @"1" : @"0";
+    md[@"tweet_mode"] = @"extended";
     
     return [self getAPIResource:@"statuses/user_timeline.json" parameters:md successBlock:^(NSDictionary *rateLimits, id response) {
         successBlock(response);
@@ -1288,7 +1289,8 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
     if(maxID) md[@"max_id"] = maxID;
     if(includeEntities) md[@"include_entities"] = [includeEntities boolValue] ? @"1" : @"0";
     if(callback) md[@"callback"] = callback;
-    
+    md[@"tweet_mode"] = @"extended";
+
     // eg. "(from:nst021 OR to:nst021)" -> "%28from%3Anst021%20OR%20to%3Anst021%29"
     // md[@"q"] = @"(from:nst021 OR to:nst021)";
     md[@"q"] = q;
