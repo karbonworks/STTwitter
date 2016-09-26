@@ -406,6 +406,7 @@ authenticateInsteadOfAuthorize:(BOOL)authenticateInsteadOfAuthorize // use NO if
                                                  placeID:(NSString *)placeID
                                       displayCoordinates:(NSNumber *)displayCoordinates
                                                 trimUser:(NSNumber *)trimUser
+                                           attachmentURL:(NSURL *)attachmentURL
                                             successBlock:(void(^)(NSDictionary *status))successBlock
                                               errorBlock:(void(^)(NSError *error))errorBlock;
 

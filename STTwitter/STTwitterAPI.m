@@ -957,6 +957,7 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
                                                  placeID:(NSString *)placeID // wins over lat/lon
                                       displayCoordinates:(NSNumber *)displayCoordinates
                                                 trimUser:(NSNumber *)trimUser
+                                           attachmentURL:(NSURL *)attachmentURL
                                             successBlock:(void(^)(NSDictionary *status))successBlock
                                               errorBlock:(void(^)(NSError *error))errorBlock {
     
@@ -984,6 +985,10 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
         md[@"lat"] = latitude;
         md[@"lon"] = longitude;
         md[@"display_coordinates"] = @"true";
+    }
+
+    if (attachmentURL) {
+      md[@"attachment_url"] = attachmentURL.absoluteString;
     }
     
     return [self postAPIResource:@"statuses/update.json" parameters:md successBlock:^(NSDictionary *rateLimits, id response) {
