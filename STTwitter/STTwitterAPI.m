@@ -1016,6 +1016,7 @@ authenticateInsteadOfAuthorize:authenticateInsteadOfAuthorize
                           placeID:placeID
                displayCoordinates:displayCoordinates
                          trimUser:trimUser
+                    attachmentURL:nil
                      successBlock:successBlock
                        errorBlock:errorBlock];
 }
